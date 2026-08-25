@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compare Cars - AutoHub</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            height: 70px;
+            margin: auto;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e53935;
+        }
+
+        .logo span {
+            color: #222;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #e53935;
+        }
+
+        nav a.active {
+            font-weight: bold;
+        }
+
+        /* =========================
+           PAGE HEADER
+        ========================== */
+
+        .page-header {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .page-header h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #777;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        /* =========================
+           SELECT CARS
+        ========================== */
+
+        .select-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+
+            margin-bottom: 30px;
+        }
+
+        .select-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .car-selectors {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .car-selector {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+
+            min-height: 170px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .car-selector:hover {
+            border-color: #e53935;
+        }
+
+        .car-selector h3 {
+            margin-bottom: 15px;
+        }
+
+        .car-selector select {
+            width: 100%;
+            max-width: 300px;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 6px;
+
+            background: white;
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .vs {
+            width: 55px;
+            height: 55px;
+
+            background: #e53935;
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+        .compare-button {
+            display: block;
+
+            margin: 25px auto 0;
+
+            padding: 13px 45px;
+
+            background: #e53935;
+            color: white;
+
+            border: none;
+            border-radius: 6px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .compare-button:hover {
+            background: #c62828;
+        }
+
+        /* =========================
+           CAR PREVIEW
+        ========================== */
+
+        .car-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+
+        .preview-card {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .preview-card:first-child {
+            border-right: 1px solid #eee;
+        }
+
+        .preview-card img {
+            width: 100%;
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            margin-bottom: 15px;
+        }
+
+        .preview-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .preview-card p {
+            color: #777;
+        }
+
+        /* =========================
+           COMPARISON TABLE
+        ========================== */
+
+        .comparison-box {
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+
+            margin-bottom: 25px;
+        }
+
+        .comparison-title {
+            padding: 20px;
+
+            background: #202020;
+            color: white;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .comparison-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row > div {
+            padding: 15px 18px;
+        }
+
+        .comparison-row > div:not(:last-child) {
+            border-right: 1px solid #eee;
+        }
+
+        .spec-name {
+            font-weight: bold;
+            background: #fafafa;
+        }
+
+        .spec-value {
+            text-align: center;
+        }
+
+        .winner {
+            color: #e53935;
+            font-weight: bold;
+        }
+
+        /* =========================
+           HIGHLIGHTS
+        ========================== */
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .highlight-card {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .highlight-card h3 {
+            color: #e53935;
+            margin-bottom: 8px;
+        }
+
+        .highlight-card p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            margin-top: 60px;
+            background: #202020;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 45px 20px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            display: block;
+
+            text-decoration: none;
+            color: #bbb;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media(max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            .car-selectors {
+                grid-template-columns: 1fr;
+            }
+
+            .vs {
+                margin: auto;
+            }
+
+            .car-preview {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-card:first-child {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .comparison-row {
+                grid-template-columns: 1fr 1fr 1fr;
+                font-size: 13px;
+            }
+
+            .comparison-row > div {
+                padding: 12px 8px;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+====================================== -->
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            Auto<span>Hub</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+            <a href="#">
+                Used Cars
+            </a>
+
+            <a href="#">
+                Reviews
+            </a>
+
+            <a href="#">
+                News
+            </a>
+
+            <a href="compare.html" class="active">
+                Compare Cars
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================
+     PAGE HEADER
+====================================== -->
+
+<section class="page-header">
+
+    <h1>
+        Compare Cars
+    </h1>
+
+    <p>
+        Compare two cars side by side and find the right one for you.
+    </p>
+
+</section>
+
+
+<!-- =====================================
+     MAIN CONTENT
+====================================== -->
+
+<div class="container">
+
+
+    <!-- =================================
+         CAR SELECTOR
+    ================================== -->
+
+    <section class="select-section">
+
+        <h2>
+            Select Cars to Compare
+        </h2>
+
+
+        <div class="car-selectors">
+
+
+            <!-- CAR 1 -->
+
+            <div class="car-selector">
+
+                <h3>
+                    Select First Car
+                </h3>
+
+                <select id="car1">
+
+                    <option value="">
+                        Select a car
+                    </option>
+
+                    <option value="scorpio">
+                        Mahindra Scorpio N
+                    </option>
+
+                    <option value="nexon">
+                        Tata Nexon
+                    </option>
+
+                    <option value="creta">
+                        Hyundai Creta
+                    </option>
+
+                    <option value="seltos">
+                        Kia Seltos
+                    </option>
+
+                    <option value="fortuner">
+                        Toyota Fortuner
+                    </option>
+
+                    <option value="city">
+                        Honda City
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- VS -->
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <!-- CAR 2 -->
+
+            <div class="car-selector">
+
+                <h3>
+                    Select Second Car
+                </h3>
+
+                <select id="car2">
+
+                    <option value="">
+                        Select a car
+                    </option>
+
+                    <option value="scorpio">
+                        Mahindra Scorpio N
+                    </option>
+
+                    <option value="nexon">
+                        Tata Nexon
+                    </option>
+
+                    <option value="creta">
+                        Hyundai Creta
+                    </option>
+
+                    <option value="seltos">
+                        Kia Seltos
+                    </option>
+
+                    <option value="fortuner">
+                        Toyota Fortuner
+                    </option>
+
+                    <option value="city">
+                        Honda City
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="compare-button"
+            onclick="compareCars()">
+
+            Compare Cars
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================
+         CAR PREVIEW
+    ================================== -->
+
+    <section
+        class="car-preview"
+        id="carPreview">
+
+
+        <div class="preview-card">
+
+            <img
+                id="image1"
+                src="https://images.unsplash.com/photo-1550355291-bbee04a92027"
+                alt="Car">
+
+            <h2 id="name1">
+                Mahindra Scorpio N
+            </h2>
+
+            <p id="price1">
+                ₹13.99 - ₹25.42 Lakh
+            </p>
+
+        </div>
+
+
+        <div class="preview-card">
+
+            <img
+                id="image2"
+                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+                alt="Car">
+
+            <h2 id="name2">
+                Tata Nexon
+            </h2>
+
+            <p id="price2">
+                ₹8.00 - ₹15.60 Lakh
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         QUICK HIGHLIGHTS
+    ================================== -->
+
+    <section class="highlights">
+
+        <div class="highlight-card">
+
+            <h3>
+                Engine
+            </h3>
+
+            <p>
+                2.0L Petrol / Diesel
+            </p>
+
+        </div>
+
+
+        <div class="highlight-card">
+
+            <h3>
+                Mileage
+            </h3>
+
+            <p>
+                Up to 18.5 kmpl
+            </p>
+
+        </div>
+
+
+        <div class="highlight-card">
+
+            <h3>
+                Safety
+            </h3>
+
+            <p>
+                5 Star Safety Rating
+            </p>
+
+        </div>
+
+
+        <div class="highlight-card">
+
+            <h3>
+                Airbags
+            </h3>
+
+            <p>
+                Up to 6 Airbags
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         PRICE
+    ================================== -->
+
+    <section class="comparison-box">
+
+        <div class="comparison-title">
+            Price & Variants
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Starting Price
+            </div>
+
+            <div class="spec-value winner">
+                ₹13.99 Lakh
+            </div>
+
+            <div class="spec-value">
+                ₹8.00 Lakh
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Top Model Price
+            </div>
+
+            <div class="spec-value">
+                ₹25.42 Lakh
+            </div>
+
+            <div class="spec-value">
+                ₹15.60 Lakh
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Number of Variants
+            </div>
+
+            <div class="spec-value">
+                25
+            </div>
+
+            <div class="spec-value">
+                15
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         ENGINE & PERFORMANCE
+    ================================== -->
+
+    <section class="comparison-box">
+
+        <div class="comparison-title">
+            Engine & Performance
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Engine
+            </div>
+
+            <div class="spec-value">
+                1997 cc
+            </div>
+
+            <div class="spec-value">
+                1199 cc
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Power
+            </div>
+
+            <div class="spec-value winner">
+                200 bhp
+            </div>
+
+            <div class="spec-value">
+                118 bhp
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Torque
+            </div>
+
+            <div class="spec-value winner">
+                380 Nm
+            </div>
+
+            <div class="spec-value">
+                170 Nm
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Transmission
+            </div>
+
+            <div class="spec-value">
+                Manual / Automatic
+            </div>
+
+            <div class="spec-value">
+                Manual / Automatic
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Fuel Type
+            </div>
+
+            <div class="spec-value">
+                Petrol / Diesel
+            </div>
+
+            <div class="spec-value">
+                Petrol / Diesel / EV
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         DIMENSIONS
+    ================================== -->
+
+    <section class="comparison-box">
+
+        <div class="comparison-title">
+            Dimensions
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Length
+            </div>
+
+            <div class="spec-value">
+                4662 mm
+            </div>
+
+            <div class="spec-value">
+                3995 mm
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Width
+            </div>
+
+            <div class="spec-value">
+                1917 mm
+            </div>
+
+            <div class="spec-value">
+                1804 mm
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Height
+            </div>
+
+            <div class="spec-value">
+                1857 mm
+            </div>
+
+            <div class="spec-value">
+                1620 mm
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Seating Capacity
+            </div>
+
+            <div class="spec-value">
+                6 / 7
+            </div>
+
+            <div class="spec-value">
+                5
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         FEATURES
+    ================================== -->
+
+    <section class="comparison-box">
+
+        <div class="comparison-title">
+            Features
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Sunroof
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Automatic Climate Control
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Wireless Charging
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                360° Camera
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div class="comparison-row">
+
+            <div class="spec-name">
+                Connected Car Technology
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+            <div class="spec-value">
+                ✓
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>AutoHub</h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#">
+                About Us
+            </a>
+
+            <a href="#">
+                Contact Us
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Cars</h3>
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+            <a href="#">
+                Used Cars
+            </a>
+
+            <a href="#">
+                Upcoming Cars
+            </a>
+
+            <a href="#">
+                Electric Cars
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Research</h3>
+
+            <a href="compare.html">
+                Compare Cars
+            </a>
+
+            <a href="#">
+                Car Reviews
+            </a>
+
+            <a href="#">
+                Car News
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Popular Brands</h3>
+
+            <a href="#">
+                Maruti Suzuki
+            </a>
+
+            <a href="#">
+                Tata
+            </a>
+
+            <a href="#">
+                Mahindra
+            </a>
+
+            <a href="#">
+                Hyundai
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AutoHub. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script>
+
+    const cars = {
+
+        scorpio: {
+            name: "Mahindra Scorpio N",
+            price: "₹13.99 - ₹25.42 Lakh",
+            image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"
+        },
+
+        nexon: {
+            name: "Tata Nexon",
+            price: "₹8.00 - ₹15.60 Lakh",
+            image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+        },
+
+        creta: {
+            name: "Hyundai Creta",
+            price: "₹11.00 - ₹20.30 Lakh",
+            image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8"
+        },
+
+        seltos: {
+            name: "Kia Seltos",
+            price: "₹11.13 - ₹20.51 Lakh",
+            image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6"
+        },
+
+        fortuner: {
+            name: "Toyota Fortuner",
+            price: "₹33.43 - ₹51.94 Lakh",
+            image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd"
+        },
+
+        city: {
+            name: "Honda City",
+            price: "₹11.95 - ₹16.35 Lakh",
+            image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d"
+        }
+
+    };
+
+
+    function compareCars() {
+
+        const car1 =
+            document.getElementById("car1").value;
+
+        const car2 =
+            document.getElementById("car2").value;
+
+
+        if (car1 === "" || car2 === "") {
+
+            alert("Please select both cars.");
+
+            return;
+
+        }
+
+
+        if (car1 === car2) {
+
+            alert("Please select two different cars.");
+
+            return;
+
+        }
+
+
+        const firstCar = cars[car1];
+        const secondCar = cars[car2];
+
+
+        document.getElementById("name1").textContent =
+            firstCar.name;
+
+        document.getElementById("price1").textContent =
+            firstCar.price;
+
+        document.getElementById("image1").src =
+            firstCar.image;
+
+
+        document.getElementById("name2").textContent =
+            secondCar.name;
+
+        document.getElementById("price2").textContent =
+            secondCar.price;
+
+        document.getElementById("image2").src =
+            secondCar.image;
+
+
+        window.scrollTo({
+            top: document.getElementById("carPreview").offsetTop - 90,
+            behavior: "smooth"
+        });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Audi Cars - AutofactsHub</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f5f6f8;
+
+            color: #222;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+
+            background: white;
+
+            border-bottom:
+                1px solid #ddd;
+        }
+
+
+        .navbar {
+
+            max-width: 1200px;
+
+            height: 70px;
+
+            margin: auto;
+
+            padding: 0 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+        }
+
+
+        .logo {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #e53935;
+        }
+
+
+        .logo span {
+
+            color: #222;
+        }
+
+
+        nav {
+
+            display: flex;
+
+            gap: 25px;
+        }
+
+
+        nav a {
+
+            text-decoration: none;
+
+            color: #333;
+
+            font-size: 15px;
+        }
+
+
+        nav a:hover {
+
+            color: #e53935;
+        }
+
+
+        nav a.active {
+
+            color: #e53935;
+
+            font-weight: bold;
+        }
+
+
+
+        /* =========================
+           BRAND HEADER
+        ========================== */
+
+        .brand-header {
+
+            background: white;
+
+            border-bottom:
+                1px solid #ddd;
+        }
+
+
+        .brand-header-content {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .brand-logo {
+
+            width: 90px;
+
+            height: 90px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,1);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            color: #555;
+        }
+
+
+        .brand-info h1 {
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .brand-info p {
+
+            color: #777;
+
+            line-height: 1.6;
+
+            max-width: 800px;
+        }
+
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+        }
+
+
+
+        /* =========================
+           PAGE TOP BAR
+        ========================== */
+
+        .top-bar {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+        }
+
+
+        .top-bar h2 {
+
+            font-size: 21px;
+        }
+
+
+        .top-bar p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-top: 5px;
+        }
+
+
+        .sort-select {
+
+            padding: 10px 12px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 5px;
+
+            background: white;
+
+            cursor: pointer;
+        }
+
+
+
+        /* =========================
+           CAR GRID
+        ========================== */
+
+        .car-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+
+        /* =========================
+           CAR CARD
+        ========================== */
+
+        .car-card {
+
+            background: white;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,0.07);
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+        }
+
+
+        .car-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 6px 16px
+                rgba(0,0,0,0.12);
+        }
+
+
+        .car-image {
+
+            position: relative;
+        }
+
+
+        .car-image img {
+
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .body-badge {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 12px;
+
+            background: white;
+
+            padding: 6px 10px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .car-info {
+
+            padding: 18px;
+        }
+
+
+        .car-info h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .car-meta {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 12px;
+        }
+
+
+        .price {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+
+        .price-note {
+
+            font-size: 12px;
+
+            color: #888;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 17px;
+        }
+
+
+        .details-btn,
+        .compare-btn {
+
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        .details-btn {
+
+            background: #e53935;
+
+            color: white;
+
+            border:
+                1px solid #e53935;
+        }
+
+
+        .details-btn:hover {
+
+            background: #c62828;
+        }
+
+
+        .compare-btn {
+
+            background: white;
+
+            color: #e53935;
+
+            border:
+                1px solid #e53935;
+        }
+
+
+        .compare-btn:hover {
+
+            background: #fff2f2;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            margin-top: 60px;
+
+            background: #202020;
+
+            color: white;
+        }
+
+
+        .footer-content {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 45px 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+
+        footer h3 {
+
+            margin-bottom: 15px;
+        }
+
+
+        footer a {
+
+            display: block;
+
+            color: #bbb;
+
+            text-decoration: none;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+        }
+
+
+        footer a:hover {
+
+            color: white;
+        }
+
+
+        .copyright {
+
+            border-top:
+                1px solid #444;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+
+                display: none;
+            }
+
+
+            .car-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .footer-content {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .brand-header-content {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+
+            .top-bar {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .sort-select {
+
+                width: 100%;
+            }
+
+
+            .car-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer-content {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+====================================== -->
+
+<header>
+
+    <div class="navbar">
+
+
+        <div class="logo">
+
+            Autofacts<span>Hub</span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+
+            <a href="#">
+                Used Cars
+            </a>
+
+
+            <a href="#">
+                Reviews
+            </a>
+
+
+            <a href="#">
+                News
+            </a>
+
+
+            <a href="compare.html">
+                Compare Cars
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================
+     BRAND INFORMATION
+     
+     THIS SECTION IS FULLY EDITABLE.
+     
+     JAVASCRIPT DOES NOT MODIFY IT.
+====================================== -->
+
+<section class="brand-header">
+
+
+    <div class="brand-header-content">
+
+
+        <!-- CHANGE BRAND LOGO / INITIALS HERE -->
+
+        <div class="brand-logo">
+
+            <img style="width: 80px;" src="D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\.png">
+            <p>logo here</p>
+
+        </div>
+
+
+        <div class="brand-info">
+
+
+            <!-- CHANGE BRAND NAME HERE -->
+
+            <h1>
+
+                Brandname Cars
+
+            </h1>
+
+
+            <!-- CHANGE BRAND DESCRIPTION HERE -->
+
+            <p>
+
+                Explore the latest CarName cars in India.
+                Find prices, specifications, features,
+                variants and more.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+====================================== -->
+
+<div class="container">
+
+
+    <!-- =================================
+         PAGE TITLE
+         
+         FULLY EDITABLE
+    ================================== -->
+
+    <div class="top-bar">
+
+
+        <div>
+
+            <h2>
+
+                Audi Cars in India
+
+            </h2>
+
+
+            <p>
+
+                Explore popular Audi cars,
+                SUVs and electric vehicles.
+
+            </p>
+
+        </div>
+
+
+        <!--
+            SORTING ONLY.
+            It does NOT change your HTML text.
+        -->
+
+        <select
+            class="sort-select"
+            id="sortCars">
+
+            <option value="default">
+
+                Sort By
+
+            </option>
+
+            <option value="low">
+
+                Price - Low to High
+
+            </option>
+
+            <option value="high">
+
+                Price - High to Low
+
+            </option>
+
+        </select>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         CAR LIST
+         
+         FULLY EDITABLE HTML
+         
+         JavaScript DOES NOT CREATE
+         OR REPLACE THESE CAR CARDS.
+    ================================== -->
+
+    <div class="car-grid">
+
+
+
+        <!-- =============================
+             CAR 1
+        ============================== -->
+
+        <div class="car-card">
+
+
+            <div class="car-image">
+
+
+                <span class="body-badge">
+
+                    SUV
+
+                </span>
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+                    alt="Tata Nexon">
+
+            </div>
+
+
+            <div class="car-info">
+
+
+                <h3>
+
+                    Tata Nexon
+
+                </h3>
+
+
+                <div class="car-meta">
+
+                    Petrol / Diesel / Electric
+                    <br>
+                    Manual / Automatic
+
+                </div>
+
+
+                <div class="price">
+
+                    ₹8.00 - ₹15.60 Lakh
+
+                </div>
+
+
+                <div class="price-note">
+
+                    Ex-showroom Price
+
+                </div>
+
+
+                <div class="buttons">
+
+
+                    <button
+                        class="details-btn"
+                        type="button">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="compare-btn"
+                        type="button">
+
+                        Compare
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================
+             CAR 2
+        ============================== -->
+
+        <div class="car-card">
+
+
+            <div class="car-image">
+
+
+                <span class="body-badge">
+
+                    SUV
+
+                </span>
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7"
+                    alt="Tata Punch">
+
+            </div>
+
+
+            <div class="car-info">
+
+
+                <h3>
+
+                    Tata Punch
+
+                </h3>
+
+
+                <div class="car-meta">
+
+                    Petrol / CNG / Electric
+                    <br>
+                    Manual / Automatic
+
+                </div>
+
+
+                <div class="price">
+
+                    ₹6.00 - ₹10.50 Lakh
+
+                </div>
+
+
+                <div class="price-note">
+
+                    Ex-showroom Price
+
+                </div>
+
+
+                <div class="buttons">
+
+
+                    <button
+                        class="details-btn"
+                        type="button">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="compare-btn"
+                        type="button">
+
+                        Compare
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================
+             CAR 3
+        ============================== -->
+
+        <div class="car-card">
+
+
+            <div class="car-image">
+
+
+                <span class="body-badge">
+
+                    SUV
+
+                </span>
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"
+                    alt="Tata Harrier">
+
+            </div>
+
+
+            <div class="car-info">
+
+
+                <h3>
+
+                    Tata Harrier
+
+                </h3>
+
+
+                <div class="car-meta">
+
+                    Diesel
+                    <br>
+                    Manual / Automatic
+
+                </div>
+
+
+                <div class="price">
+
+                    ₹14.99 - ₹26.44 Lakh
+
+                </div>
+
+
+                <div class="price-note">
+
+                    Ex-showroom Price
+
+                </div>
+
+
+                <div class="buttons">
+
+
+                    <button
+                        class="details-btn"
+                        type="button">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="compare-btn"
+                        type="button">
+
+                        Compare
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================
+             CAR 4
+        ============================== -->
+
+        <div class="car-card">
+
+
+            <div class="car-image">
+
+
+                <span class="body-badge">
+
+                    SUV
+
+                </span>
+
+
+                <img
+                    src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c"
+                    alt="Tata Safari">
+
+            </div>
+
+
+            <div class="car-info">
+
+
+                <h3>
+
+                    Tata Safari
+
+                </h3>
+
+
+                <div class="car-meta">
+
+                    Diesel
+                    <br>
+                    Manual / Automatic
+
+                </div>
+
+
+                <div class="price">
+
+                    ₹15.50 - ₹27.00 Lakh
+
+                </div>
+
+
+                <div class="price-note">
+
+                    Ex-showroom Price
+
+                </div>
+
+
+                <div class="buttons">
+
+
+                    <button
+                        class="details-btn"
+                        type="button">
+
+                        View Details
+
+                    </button>
+
+
+                    <button
+                        class="compare-btn"
+                        type="button">
+
+                        Compare
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <h3>
+                AutofactsHub
+            </h3>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="#">
+                About Us
+            </a>
+
+
+            <a href="#">
+                Contact Us
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Cars
+            </h3>
+
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+
+            <a href="#">
+                Used Cars
+            </a>
+
+
+            <a href="#">
+                Upcoming Cars
+            </a>
+
+
+            <a href="#">
+                Electric Cars
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Research
+            </h3>
+
+
+            <a href="compare.html">
+                Compare Cars
+            </a>
+
+
+            <a href="#">
+                Car Reviews
+            </a>
+
+
+            <a href="#">
+                Car News
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Popular Brands
+            </h3>
+
+
+            <a href="#">
+                Tata
+            </a>
+
+
+            <a href="#">
+                Mahindra
+            </a>
+
+
+            <a href="#">
+                Hyundai
+            </a>
+
+
+            <a href="#">
+                Audi
+            </a>
+
+
+            <a href="#">
+                BMW
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AutofactsHub.
+        All Rights Reserved.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================
+     JAVASCRIPT
+     
+     IMPORTANT:
+     
+     JavaScript is ONLY used for
+     SORTING the existing HTML cards.
+     
+     It does NOT:
+     
+     - change brand name
+     - change description
+     - create cards
+     - delete cards
+     - replace HTML
+     ===================================== -->
+
+<script>
+
+
+    const sortSelect =
+        document.getElementById(
+            "sortCars"
+        );
+
+
+    const carGrid =
+        document.querySelector(
+            ".car-grid"
+        );
+
+
+    sortSelect.addEventListener(
+        "change",
+        function() {
+
+
+            const cards =
+                Array.from(
+                    carGrid.children
+                );
+
+
+            if (
+                this.value === "default"
+            ) {
+
+                return;
+
+            }
+
+
+            cards.sort(
+                function(a, b) {
+
+
+                    const priceA =
+                        getPrice(a);
+
+
+                    const priceB =
+                        getPrice(b);
+
+
+                    if (
+                        this.value === "low"
+                    ) {
+
+                        return (
+                            priceA -
+                            priceB
+                        );
+
+                    }
+
+
+                    if (
+                        this.value === "high"
+                    ) {
+
+                        return (
+                            priceB -
+                            priceA
+                        );
+
+                    }
+
+
+                    return 0;
+
+                }
+            );
+
+
+            cards.forEach(
+                function(card) {
+
+                    carGrid.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+
+    function getPrice(card) {
+
+
+        const priceText =
+            card.querySelector(
+                ".price"
+            ).textContent;
+
+
+        const number =
+            priceText
+                .replace(/[^\d.]/g, "")
+                .split(".")[0];
+
+
+        return (
+            parseFloat(number)
+            || 0
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

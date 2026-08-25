@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoHub - Find Your Perfect Car</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        /* =========================
+           HEADER / NAVBAR
+        ========================== */
+
+        header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e53935;
+        }
+
+        .logo span {
+            color: #222;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #e53935;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            height: 430px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.45),
+                    rgba(0,0,0,0.45)
+                ),
+                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* SEARCH BAR */
+
+        .search-box {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+
+            display: flex;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            border: none;
+            background: #e53935;
+            color: white;
+
+            padding: 0 30px;
+            border-radius: 6px;
+
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-box button:hover {
+            background: #c62828;
+        }
+
+        /* =========================
+           GENERAL LINKS
+        ========================== */
+
+        .quick-links {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .quick-card {
+            background: white;
+            padding: 22px;
+
+            border-radius: 10px;
+            text-align: center;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .quick-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .quick-card p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        .section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           SECTION A - FILTERS
+        ========================== */
+
+        .filter-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+
+        .filter-group {
+            margin-bottom: 30px;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 15px;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter {
+            border: 1px solid #ddd;
+            background: white;
+
+            padding: 12px 20px;
+            border-radius: 25px;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter:hover {
+            border-color: #e53935;
+            color: #e53935;
+        }
+
+        .filter.active {
+            background: #e53935;
+            color: white;
+            border-color: #e53935;
+        }
+
+        /* =========================
+           SECTION B - BRANDS
+        ========================== */
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .brand-card {
+            background: white;
+
+            height: 120px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+            border: 1px solid #eee;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .brand-card:hover {
+            border-color: #e53935;
+            transform: translateY(-4px);
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+
+            background: #fdfdfd;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .brand-card p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .brand-car{
+            height:55px;
+        }
+
+        /* =========================
+           POPULAR CARS
+        ========================== */
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .car-details {
+            padding: 18px;
+        }
+
+        .car-details h3 {
+            margin-bottom: 8px;
+        }
+
+        .car-details p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .view-button {
+            display: block;
+            width: 100%;
+
+            padding: 12px;
+            margin-top: 15px;
+
+            border: 1px solid #e53935;
+            background: white;
+            color: #e53935;
+
+            border-radius: 6px;
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .view-button:hover {
+            background: #e53935;
+            color: white;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            margin-top: 60px;
+            background: #202020;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 20px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            display: block;
+            text-decoration: none;
+            color: #bbb;
+
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            text-align: center;
+
+            padding: 20px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .brand-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .car-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                padding: 14px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+====================================== -->
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            Auto<span>Hub</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="new-cars.html">New Cars</a>
+            <a href="#">Used Cars</a>
+            <a href="#">Reviews</a>
+            <a href="#">News</a>
+            <a href="car-compare.html">Compare Cars</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================
+     HERO
+====================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Find Your Perfect Car</h1>
+
+        <p>
+            Search, compare and discover the best cars for you.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search by car name, brand or model..."
+            >
+
+            <button>
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     GENERAL LINKS
+====================================== -->
+
+<section class="quick-links">
+
+    <div class="quick-card">
+        <h3>🚗 New Cars</h3>
+        <p>Explore latest cars</p>
+    </div>
+
+    <div class="quick-card">
+        <h3>🔑 Used Cars</h3>
+        <p>Find pre-owned cars</p>
+    </div>
+
+    <div class="quick-card">
+        <h3>⚖ Compare Cars</h3>
+        <p>Compare cars side by side</p>
+    </div>
+
+    <div class="quick-card">
+        <h3>📰 Car News</h3>
+        <p>Latest automobile updates</p>
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECTION B - CAR BRANDS
+====================================== -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Explore Cars By Brand
+    </h2>
+
+    <p class="section-description">
+        Select your favourite automobile brand.
+    </p>
+
+
+    <div class="brand-grid">
+
+
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\audi.png"></div>             <p>Audi</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\astonmartinlogo.png"></div>  <p>Aston Martin</p>      </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\bmwcar.png"></div>           <p>BMW</p>     </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\byd.png"></div>              <p>BYD</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\bentley.png"></div>          <p>Bentley</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\citroen.png"></div>          <p>Citroën</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\Ferrari.png"></div>          <p>Ferrari</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\forcelogo.png"></div>        <p>Force Motors</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\hondanew.png"></div>            <p>Honda</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\hy.png"></div>               <p>Hyundai</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\isuzu.png"></div>            <p>ISUZU</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\jaguar.png"></div>           <p>Jaguar</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\jeep.png"></div>             <p>Jeep</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\kia.png"></div>              <p>KIA</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\lamborghini.png"></div>      <p>Lamborghini</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\lr.png"></div>               <p>Land Rover / Range Rover</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\lexus.png"></div>            <p>Lexus</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mahindranew.png"></div>         <p>Mahindra</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mahindraelectric.png"></div>         <p>Mahindra Electric</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\suzukicar.png"></div>        <p>Maruti Suzuki</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\maserati.png"></div>         <p>Maserati</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mclaren.png"></div>          <p>McLaren</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mercedes.png"></div>         <p>mercedes-Benz</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mg.png"></div>               <p>MG Motor</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\mini.png"></div>             <p>MINI</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\nissan.png"></div>           <p>Nissan</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\porschenew.png"></div>          <p>Porsche</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\renaultlogo.png"></div>      <p>Renault</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\rollsroyce.png"></div>       <p>Rolls Royce</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\bmwcar.png"></div>           <p>Skoda</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\tatalogo.png"></div>         <p>Tata Motors</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\toyota.png"></div>           <p>Toyota</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\vw.png"></div>               <p>Volkswagen</p>        </div>
+        <div class="brand-card"><div class="brand-logo"><img class="brand-car" src = "D:\Technical\Learn\Web Development\AutoHub\images\brand\cars\volvo.png"></div>            <p>Volvo</p>        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     SECTION A - CATEGORIES / FILTERS
+====================================== -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Find Cars By Category
+    </h2>
+
+    <p class="section-description">
+        Choose your preferences to find the right car.
+    </p>
+
+
+    <div class="filter-container">
+
+
+        <!-- BODY TYPE -->
+
+        <div class="filter-group">
+
+            <h3>Body Type</h3>
+
+            <div class="filter-options">
+
+                <button class="filter">
+                    Hatchback
+                </button>
+
+                <button class="filter">
+                    Sedan
+                </button>
+
+                <button class="filter">
+                    SUV
+                </button>
+
+                <button class="filter">
+                    MUV
+                </button>
+
+                <button class="filter">
+                    Coupe
+                </button>
+
+                <button class="filter">
+                    Convertible
+                </button>
+
+                <button class="filter">
+                    Pickup Truck
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUDGET -->
+
+        <div class="filter-group">
+
+            <h3>Budget Range</h3>
+
+            <div class="filter-options">
+
+                <button class="filter">
+                    Under ₹5 Lakh
+                </button>
+
+                <button class="filter">
+                    ₹5 - ₹10 Lakh
+                </button>
+
+                <button class="filter">
+                    ₹10 - ₹20 Lakh
+                </button>
+
+                <button class="filter">
+                    ₹20 - ₹40 Lakh
+                </button>
+
+                <button class="filter">
+                    ₹40 Lakh - ₹1 Crore
+                </button>
+
+                <button class="filter">
+                    Above ₹1 Crore
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FUEL TYPE -->
+
+        <div class="filter-group">
+
+            <h3>Fuel Type</h3>
+
+            <div class="filter-options">
+
+                <button class="filter">
+                    Petrol
+                </button>
+
+                <button class="filter">
+                    Diesel
+                </button>
+
+                <button class="filter">
+                    CNG
+                </button>
+
+                <button class="filter">
+                    Electric
+                </button>
+
+                <button class="filter">
+                    Hybrid
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRANSMISSION -->
+
+        <div class="filter-group">
+
+            <h3>Transmission</h3>
+
+            <div class="filter-options">
+
+                <button class="filter">
+                    Manual
+                </button>
+
+                <button class="filter">
+                    Automatic
+                </button>
+
+                <button class="filter">
+                    AMT
+                </button>
+
+                <button class="filter">
+                    CVT
+                </button>
+
+                <button class="filter">
+                    DCT
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- =====================================
+     POPULAR CARS
+====================================== -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Popular Cars
+    </h2>
+
+    <p class="section-description">
+        Check out some of the most popular cars.
+    </p>
+
+
+    <div class="car-grid">
+
+
+        <div class="car-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1550355291-bbee04a92027"
+                alt="Car"
+            >
+
+            <div class="car-details">
+
+                <h3>Mahindra Scorpio N</h3>
+
+                <p>
+                    Diesel • Manual • SUV
+                </p>
+
+                <div class="price">
+                    ₹13.99 - ₹25.42 Lakh
+                </div>
+
+                <button class="view-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="car-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
+                alt="Car"
+            >
+
+            <div class="car-details">
+
+                <h3>Tata Nexon</h3>
+
+                <p>
+                    Petrol • Diesel • SUV
+                </p>
+
+                <div class="price">
+                    ₹8.00 - ₹15.60 Lakh
+                </div>
+
+                <button class="view-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="car-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8"
+                alt="Car"
+            >
+
+            <div class="car-details">
+
+                <h3>Hyundai Creta</h3>
+
+                <p>
+                    Petrol • Diesel • SUV
+                </p>
+
+                <div class="price">
+                    ₹11.00 - ₹20.30 Lakh
+                </div>
+
+                <button class="view-button">
+                    View Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <h3>AutoHub</h3>
+
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Careers</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Cars</h3>
+
+            <a href="#">New Cars</a>
+            <a href="#">Used Cars</a>
+            <a href="#">Upcoming Cars</a>
+            <a href="#">Electric Cars</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Research</h3>
+
+            <a href="#">Compare Cars</a>
+            <a href="#">Car Reviews</a>
+            <a href="#">Car News</a>
+            <a href="#">Car Videos</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Popular Brands</h3>
+
+            <a href="#">Maruti Suzuki</a>
+            <a href="#">Tata</a>
+            <a href="#">Mahindra</a>
+            <a href="#">Hyundai</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AutoHub. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script>
+
+    // Filter button selection
+
+    const filters = document.querySelectorAll(".filter");
+
+    filters.forEach(function(filter) {
+
+        filter.addEventListener("click", function() {
+
+            this.classList.toggle("active");
+
+        });
+
+    });
+
+
+    // Search
+
+    const searchButton =
+        document.querySelector(".search-box button");
+
+    const searchInput =
+        document.querySelector(".search-box input");
+
+
+    searchButton.addEventListener("click", function() {
+
+        const value = searchInput.value.trim();
+
+        if (value === "") {
+
+            alert("Please enter a car or brand name.");
+
+        }
+
+        else {
+
+            alert("Searching for: " + value);
+
+        }
+
+    });
+
+</script>
+
+
+</body>
+</html>
