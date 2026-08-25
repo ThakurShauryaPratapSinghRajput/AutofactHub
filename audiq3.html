@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Audi Q3 - Price, Specifications & Features | AutoFactHub</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            background: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .navbar {
+            max-width: 1200px;
+            height: 70px;
+            margin: auto;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e53935;
+        }
+
+
+        .logo span {
+            color: #222;
+        }
+
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+
+
+        nav a:hover {
+            color: #e53935;
+        }
+
+
+        nav a.active {
+            color: #e53935;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BREADCRUMB
+        ========================== */
+
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        .breadcrumb a {
+            color: #555;
+            text-decoration: none;
+        }
+
+
+        .breadcrumb a:hover {
+            color: #e53935;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           CAR HERO
+        ========================== */
+
+        .car-hero {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 55% 45%;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+
+
+        /* =========================
+           CAR image section
+        ========================== */
+       
+        .car-image-section {
+
+            background: #f2f2f2;
+
+            min-height: 400px;
+
+            padding: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            position: relative;
+        }
+
+        .car-info-section {
+            padding: 35px;
+        }
+
+
+        .brand-name {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+
+        .car-info-section h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+
+        .rating {
+            display: inline-block;
+
+            background: #e8f5e9;
+            color: #2e7d32;
+
+            padding: 7px 12px;
+            border-radius: 5px;
+
+            font-weight: bold;
+            font-size: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .car-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+
+        .price-label {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+
+        .car-price {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+
+        .price-note {
+            color: #888;
+            font-size: 13px;
+        }
+
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 13px 25px;
+            border-radius: 6px;
+
+            font-weight: bold;
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        .primary-btn {
+            background: #e53935;
+            color: white;
+            border: 1px solid #e53935;
+        }
+
+
+        .primary-btn:hover {
+            background: #c62828;
+        }
+
+
+        .secondary-btn {
+            background: white;
+            color: #e53935;
+            border: 1px solid #e53935;
+        }
+
+
+        /* =========================
+           QUICK SPECS
+        ========================== */
+
+        .quick-specs {
+            background: white;
+
+            margin-top: 20px;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 15px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+
+        .quick-spec {
+            text-align: center;
+
+            padding: 12px;
+
+            border-right: 1px solid #eee;
+        }
+
+
+        .quick-spec:last-child {
+            border-right: none;
+        }
+
+
+        .quick-spec .label {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+
+        .quick-spec .value {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section {
+            background: white;
+
+            border-radius: 12px;
+
+            margin-top: 25px;
+
+            padding: 25px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+
+        .section-description {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           HIGHLIGHTS
+        ========================== */
+
+        .highlights {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .highlight {
+            border: 1px solid #eee;
+
+            padding: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .highlight h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+
+        .highlight p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           SPEC TABLE
+        ========================== */
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        .spec-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .spec-table tr:last-child {
+            border-bottom: none;
+        }
+
+
+        .spec-table td {
+            padding: 15px 10px;
+        }
+
+
+        .spec-table td:first-child {
+            width: 45%;
+            color: #777;
+        }
+
+
+        .spec-table td:last-child {
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           VARIANTS
+        ========================== */
+
+        .variants {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .variant {
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            padding: 20px;
+        }
+
+
+        .variant h3 {
+            margin-bottom: 10px;
+        }
+
+
+        .variant p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+
+        .variant-price {
+            color: #222 !important;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PROS CONS
+        ========================== */
+
+        .pros-cons {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .pros,
+        .cons {
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+
+        .pros {
+            background: #f1f8f2;
+        }
+
+
+        .cons {
+            background: #fff5f5;
+        }
+
+
+        .pros h3,
+        .cons h3 {
+            margin-bottom: 15px;
+        }
+
+
+        .pros li,
+        .cons li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+
+        /* =========================
+           REVIEW
+        ========================== */
+
+        .review-box {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+
+        .review-score {
+            min-width: 130px;
+            text-align: center;
+
+            background: #f8f8f8;
+
+            border-radius: 10px;
+
+            padding: 20px;
+        }
+
+
+        .review-score strong {
+            display: block;
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+
+        .review-score span {
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        .review-text {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            margin-top: 60px;
+            background: #202020;
+            color: white;
+        }
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 45px 20px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 30px;
+        }
+
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+
+        footer a {
+            display: block;
+
+            color: #bbb;
+
+            text-decoration: none;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+        }
+
+
+        footer a:hover {
+            color: white;
+        }
+
+
+        .copyright {
+            border-top: 1px solid #444;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media(max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+
+            .car-hero {
+                grid-template-columns: 1fr;
+            }
+
+
+            .car-image-section {
+                min-height: 300px;
+            }
+
+
+            .quick-specs {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+
+            .quick-spec:nth-child(3) {
+                border-right: none;
+            }
+
+
+            .highlights {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .footer-content {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            .car-info-section h1 {
+                font-size: 30px;
+            }
+
+
+            .quick-specs {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .quick-spec {
+                border-right: none;
+            }
+
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+
+            .variants {
+                grid-template-columns: 1fr;
+            }
+
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+
+            .review-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+
+
+.gallery-main {
+
+    width: 100%;
+
+    height: 390px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+
+.gallery-main img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: opacity 0.2s ease;
+}
+
+
+.gallery-btn {
+
+    width: 48px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2;
+}
+
+
+.gallery-btn:hover {
+
+    background: rgba(0, 0, 0, 0.85);
+}
+
+
+.gallery-counter {
+
+    position: absolute;
+
+    bottom: 12px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(0, 0, 0, 0.65);
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+====================================== -->
+
+<header>
+
+    <div class="navbar">
+
+
+        <div class="logo">
+
+            Auto<span>FactHub</span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+
+            <a href="#">
+                Used Cars
+            </a>
+
+
+            <a href="#">
+                Reviews
+            </a>
+
+
+            <a href="#">
+                News
+            </a>
+
+
+            <a href="compare.html">
+                Compare Cars
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================
+     BREADCRUMB
+====================================== -->
+
+<div class="breadcrumb">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    &nbsp; / &nbsp;
+
+    <a href="brand-cars.html">
+        Audi
+    </a>
+
+    &nbsp; / &nbsp;
+
+    Audi Q3
+
+</div>
+
+
+
+<!-- =====================================
+     MAIN
+====================================== -->
+
+<div class="container">
+
+
+    <!-- =================================
+         CAR HERO
+    ================================== -->
+
+    <section class="car-hero">
+
+
+<div class="car-image-section">
+
+    <button
+        type="button"
+        class="gallery-btn gallery-prev"
+        id="prevImage"
+        aria-label="Previous image">
+
+        &#10094;
+
+    </button>
+
+
+    <div class="gallery-main">
+
+        <img
+            id="carGalleryImage"
+            src="D:\Technical\Learn\Web Development\AutoHub\images\brand\Audi\new\audiq3\audiq3.avif"
+            alt="Audi Q3">
+
+        <div
+            class="gallery-counter"
+            id="galleryCounter">
+
+            1 / 4
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="gallery-btn gallery-next"
+        id="nextImage"
+        aria-label="Next image">
+
+        &#10095;
+
+    </button>
+
+</div>
+
+
+
+        <!-- CAR INFORMATION -->
+
+        <div class="car-info-section">
+            <div class="brand-name">
+                Audi
+            </div>
+            <h1>Audi Q3</h1>
+
+            <div class="rating"> ★ 4.3 / 5 </div>
+
+            <p class="car-description">
+
+                The Audi Q3 is a premium compact luxury SUV
+                known for its stylish design, premium interior,
+                comfortable ride and strong performance.
+
+            </p>
+
+            <div class="price-label">
+                Starting Price
+            </div>
+
+            <div class="car-price">
+                ₹43.81 Lakh
+            </div>
+
+            <div class="price-note">
+                Ex-showroom Price
+            </div>
+            <div class="hero-buttons">
+                <button
+                    class="primary-btn">
+                    View Variants
+                </button>
+
+                <button
+                    class="secondary-btn">
+                    Compare
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =================================
+         QUICK SPECIFICATIONS
+    ================================== -->
+
+    <section class="quick-specs">
+        <div class="quick-spec">
+            <div class="label">
+                Engine
+            </div>
+
+            <div class="value">
+                1984 cc
+            </div>
+        </div>
+
+
+        <div class="quick-spec">
+            <div class="label">
+                Power
+            </div>
+
+            <div class="value">
+                190 PS
+            </div>
+        </div>
+
+
+        <div class="quick-spec">
+            <div class="label">
+                Mileage
+            </div>
+
+            <div class="value">
+                14.93 kmpl
+            </div>
+        </div>
+
+
+        <div class="quick-spec">
+            <div class="label">
+                Fuel
+            </div>
+
+            <div class="value">
+                Petrol
+            </div>
+        </div>
+
+
+        <div class="quick-spec">
+            <div class="label">
+                Transmission
+            </div>
+
+            <div class="value">
+                Automatic
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- =================================
+         OVERVIEW
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 Overview
+
+        </h2>
+
+
+        <p class="section-description">
+
+            The Audi Q3 is a premium compact SUV that combines
+            luxury, practicality and performance. It features
+            Audi's signature exterior styling, a premium cabin,
+            modern technology and an automatic transmission.
+
+            <br><br>
+
+            The Q3 is positioned as a premium urban SUV and
+            competes with other luxury compact SUVs in its segment.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         HIGHLIGHTS
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 Highlights
+
+        </h2>
+
+
+        <div class="highlights">
+
+
+            <div class="highlight">
+
+                <h3>
+                    Premium Design
+                </h3>
+
+                <p>
+
+                    Stylish exterior design with Audi's
+                    signature grille and LED lighting.
+
+                </p>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <h3>
+                    Powerful Engine
+                </h3>
+
+                <p>
+
+                    2.0-litre turbocharged petrol engine
+                    offering strong performance.
+
+                </p>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <h3>
+                    Quattro
+                </h3>
+
+                <p>
+
+                    Audi's renowned all-wheel-drive technology
+                    is available on the Q3.
+
+                </p>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <h3>
+                    Premium Interior
+                </h3>
+
+                <p>
+
+                    High-quality materials, modern technology
+                    and a premium cabin experience.
+
+                </p>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <h3>
+                    Automatic Transmission
+                </h3>
+
+                <p>
+
+                    Smooth automatic transmission designed
+                    for comfortable everyday driving.
+
+                </p>
+
+            </div>
+
+
+            <div class="highlight">
+
+                <h3>
+                    Safety
+                </h3>
+
+                <p>
+
+                    Multiple airbags and advanced safety
+                    technologies.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         ENGINE & PERFORMANCE
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Engine & Performance
+
+        </h2>
+
+
+        <table class="spec-table">
+
+
+            <tr>
+
+                <td>
+                    Engine Type
+                </td>
+
+                <td>
+                    2.0L TFSI Petrol
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Engine Displacement
+                </td>
+
+                <td>
+                    1984 cc
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Maximum Power
+                </td>
+
+                <td>
+                    190 PS
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Maximum Torque
+                </td>
+
+                <td>
+                    320 Nm
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Transmission
+                </td>
+
+                <td>
+                    7-Speed Automatic
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Drive Type
+                </td>
+
+                <td>
+                    Front-Wheel Drive / Quattro
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Fuel Type
+                </td>
+
+                <td>
+                    Petrol
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         DIMENSIONS
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Dimensions
+
+        </h2>
+
+
+        <table class="spec-table">
+
+
+            <tr>
+
+                <td>
+                    Length
+                </td>
+
+                <td>
+                    4485 mm
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Width
+                </td>
+
+                <td>
+                    1849 mm
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Height
+                </td>
+
+                <td>
+                    1616 mm
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Wheelbase
+                </td>
+
+                <td>
+                    2680 mm
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Seating Capacity
+                </td>
+
+                <td>
+                    5
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Body Type
+                </td>
+
+                <td>
+                    SUV
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         FEATURES
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 Features
+
+        </h2>
+
+
+        <table class="spec-table">
+
+
+            <tr>
+
+                <td>
+                    Infotainment
+                </td>
+
+                <td>
+                    Touchscreen Infotainment System
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Digital Instrument Cluster
+                </td>
+
+                <td>
+                    Available
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Apple CarPlay
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Android Auto
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Automatic Climate Control
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Sunroof
+                </td>
+
+                <td>
+                    Panoramic Sunroof
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Parking Camera
+                </td>
+
+                <td>
+                    Available
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         SAFETY
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Safety
+
+        </h2>
+
+
+        <table class="spec-table">
+
+
+            <tr>
+
+                <td>
+                    Airbags
+                </td>
+
+                <td>
+                    Multiple Airbags
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    ABS
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Electronic Stability Control
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Parking Sensors
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Traction Control
+                </td>
+
+                <td>
+                    Yes
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         VARIANTS
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 Variants
+
+        </h2>
+
+
+        <div class="variants">
+
+
+            <div class="variant">
+
+
+                <h3>
+                    Audi Q3 Premium
+                </h3>
+
+
+                <p>
+                    Petrol • Automatic
+                </p>
+
+
+                <p class="variant-price">
+                    ₹43.81 Lakh
+                </p>
+
+
+            </div>
+
+
+            <div class="variant">
+
+
+                <h3>
+                    Audi Q3 Technology
+                </h3>
+
+
+                <p>
+                    Petrol • Automatic
+                </p>
+
+
+                <p class="variant-price">
+                    ₹50.00 Lakh
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         PROS & CONS
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 Pros & Cons
+
+        </h2>
+
+
+        <div class="pros-cons">
+
+
+            <div class="pros">
+
+                <h3>
+                    Pros
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Premium interior quality
+                    </li>
+
+                    <li>
+                        Strong performance
+                    </li>
+
+                    <li>
+                        Attractive design
+                    </li>
+
+                    <li>
+                        Comfortable ride
+                    </li>
+
+                    <li>
+                        Premium brand value
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="cons">
+
+                <h3>
+                    Cons
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Expensive compared with mainstream SUVs
+                    </li>
+
+                    <li>
+                        Maintenance can be costly
+                    </li>
+
+                    <li>
+                        Limited rear-seat space compared with larger SUVs
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================
+         REVIEW
+    ================================== -->
+
+    <section class="section">
+
+
+        <h2 class="section-title">
+
+            Audi Q3 User Reviews
+
+        </h2>
+
+
+        <div class="review-box">
+
+
+            <div class="review-score">
+
+                <strong>
+                    4.3
+                </strong>
+
+                <span>
+                    Out of 5
+                </span>
+
+            </div>
+
+
+            <div class="review-text">
+
+                <p>
+
+                    The Audi Q3 offers a good combination
+                    of premium styling, performance and
+                    everyday practicality. Its compact
+                    dimensions make it suitable for city
+                    driving while the powerful engine provides
+                    a strong highway experience.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<!-- =====================================
+     FOOTER
+====================================== -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <h3>
+                AutoFactHub
+            </h3>
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="#">
+                About Us
+            </a>
+
+
+            <a href="#">
+                Contact Us
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Cars
+            </h3>
+
+
+            <a href="new-cars.html">
+                New Cars
+            </a>
+
+
+            <a href="#">
+                Used Cars
+            </a>
+
+
+            <a href="#">
+                Upcoming Cars
+            </a>
+
+
+            <a href="#">
+                Electric Cars
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Research
+            </h3>
+
+
+            <a href="compare.html">
+                Compare Cars
+            </a>
+
+
+            <a href="#">
+                Car Reviews
+            </a>
+
+
+            <a href="#">
+                Car News
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                Popular Brands
+            </h3>
+
+
+            <a href="brand-cars.html">
+                Audi
+            </a>
+
+
+            <a href="#">
+                BMW
+            </a>
+
+
+            <a href="#">
+                Mercedes-Benz
+            </a>
+
+
+            <a href="#">
+                Tata
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AutoFactHub.
+        All Rights Reserved.
+
+    </div>
+
+
+</footer>
+<!-- =====================================
+     Gallery script
+====================================== -->
+<script>
+
+    const carImages = [
+
+        "D:\Technical\Learn\Web Development\AutoHub\images\brand\Audi\new\audiq3\audi-q3.avif",
+
+        "D:\Technical\Learn\Web Development\AutoHub\images\brand\Audi\new\audiq3\audi-q3.png",
+
+        "D:\Technical\Learn\Web Development\AutoHub\images\brand\Audi\new\audiq3\audi-q3(2).png",
+
+        "D:\Technical\Learn\Web Development\AutoHub\images\brand\Audi\new\audiq3\audi-q3(3).png"
+
+    ];
+
+
+    let currentImage = 0;
+
+
+    const galleryImage =
+        document.getElementById(
+            "carGalleryImage"
+        );
+
+
+    const galleryCounter =
+        document.getElementById(
+            "galleryCounter"
+        );
+
+
+    const previousButton =
+        document.getElementById(
+            "prevImage"
+        );
+
+
+    const nextButton =
+        document.getElementById(
+            "nextImage"
+        );
+
+
+    function showImage(index) {
+
+        currentImage = index;
+
+        galleryImage.src =
+            carImages[currentImage];
+
+        galleryCounter.textContent =
+            (currentImage + 1)
+            +
+            " / "
+            +
+            carImages.length;
+
+    }
+
+
+    previousButton.addEventListener(
+        "click",
+        function() {
+
+            currentImage--;
+
+            if (
+                currentImage < 0
+            ) {
+
+                currentImage =
+                    carImages.length - 1;
+
+            }
+
+            showImage(currentImage);
+
+        }
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        function() {
+
+            currentImage++;
+
+            if (
+                currentImage >=
+                carImages.length
+            ) {
+
+                currentImage = 0;
+
+            }
+
+            showImage(currentImage);
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
